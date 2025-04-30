@@ -2,11 +2,24 @@ import { TextInput, View, TouchableHighlight, Text } from "react-native";
 import React, { useState } from "react";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
+//API
+import { getPlayerById } from "@/helper_libraries/api_interactions/main";
+
 const index = () => {
     const [searchBarText, setSearchBarText] = useState<string>("");
 
-    function onPressSearchButton(): void {
-        console.log(searchBarText);
+    //Search for player by id
+    async function onPressSearchButton(): Promise<void> {
+        try {
+            const playerData = await getPlayerById(searchBarText);
+            if (playerData.error) {
+                throw new Error(`Error fetching player, verify id`);
+            } else {
+                console.log(playerData);
+            }
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     return (
