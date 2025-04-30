@@ -13,7 +13,7 @@ const TabIcon = ({ label, icon, focused }: TabIconInterface) => (
         <Image
             source={icon}
             className="size-8"
-            style={focused ? { tintColor: "blue" } : { tintColor: "#C1C0BF" }}
+            style={focused ? { tintColor: "#346877" } : { tintColor: "#3AD2DC" }}
         />
         <Text className="text-navTabs">{label}</Text>
     </View>
@@ -33,6 +33,7 @@ export default function TabLayout() {
                 tabBarStyle: {
                     backgroundColor: "#1F1927",
                 },
+                headerShown: false, // Disable headers globally
             }}
         >
             <Tabs.Screen

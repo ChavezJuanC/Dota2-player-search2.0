@@ -1,10 +1,13 @@
 import { Stack } from "expo-router";
-import "./styling/globals.css"
+import { StatusBar } from "react-native";
+import "./styling/globals.css";
 
 export default function RootLayout() {
-  return <Stack>
-    <Stack.Screen name="(tabs)" options={{headerShown : false}}/>
-    </Stack>;
+    return (
+        <>
+            <Stack>
+                <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+            </Stack>
+        </>
+    );
 }
-
-
