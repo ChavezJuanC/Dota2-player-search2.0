@@ -16,9 +16,11 @@ const index = () => {
                 throw new Error(`Error fetching player, verify id`);
             } else {
                 console.log(playerData);
+                //route to player screen with fetched data to use on load(useEffect)
             }
         } catch (error) {
             console.log(error);
+            //route to error screen
         }
     }
 
@@ -51,10 +53,10 @@ const index = () => {
 export default index;
 
 /*
-BgMain #1F1927
-BgBtn #3AD2DC
-TextMain #97939C
-TextSecond #3AD2DC
-NavTabs #C1C0BF
-BtnText #346877
+-add a temp button to navigate to the next route..
+-create playerscreen with fixed data..
+-style nicely
+-implement interface?? or just feed data obj??
+-pass props
+-test with dynamic data
 */
