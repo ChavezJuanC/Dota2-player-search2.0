@@ -3,18 +3,21 @@ import React, { useState } from "react";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { useRouter } from "expo-router";
 
+//api
+
 const index = () => {
     const [searchBarText, setSearchBarText] = useState<string>("");
     const router = useRouter();
 
-    const handleSearch = () => {
+    async function handleSearch(): Promise<void> {
         if (searchBarText.trim()) {
-            // VID player ID before navigation
+            // TESTING ENDPOINTS
+
             router.push(`/playersearch/${searchBarText.trim()}`);
         } else {
             console.log("Please enter a valid player ID");
         }
-    };
+    }
 
     return (
         <SafeAreaProvider>
