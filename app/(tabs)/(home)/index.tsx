@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { useRouter } from "expo-router";
 
+import { getPlayerById } from "@/helper_libraries/api_interactions/main";
+
 //api
 
 const index = () => {
@@ -11,10 +13,17 @@ const index = () => {
 
     async function handleSearch(): Promise<void> {
         if (searchBarText.trim()) {
-            // TESTING ENDPOINTS
-
-            router.push(`/playersearch/${searchBarText.trim()}`);
+            //Validate ID before navigation
+            try {
+                const valid_player: Promise<any> = await getPlayerById(searchBarText);
+                console.log(valid_player);
+                router.push(`/playersearch/${searchBarText.trim()}`);
+            } catch (error) {
+                //Route to error screen????
+                console.log("Error fetching player data, not navigating!");
+            }
         } else {
+            //Maybe a modal here??????
             console.log("Please enter a valid player ID");
         }
     }
